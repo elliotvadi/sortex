@@ -1,2 +1,2 @@
-# sortex
-A program for sorting media files
+# SortEX
+A program for sorting media files by date.
