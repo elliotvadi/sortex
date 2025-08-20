@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-SortEX – sort images and videos by date (EXIF) into folders "MM-YY".
+SortEX – sort images and videos by date (EXIF) into folders "YYYY-MM".
 GUI with Tkinter to select source folder. Works on Windows/macOS/Linux.
 Requires: Pillow (pip install pillow)
 Optional: pillow-heif for HEIC/HEIF (pip install pillow-heif)
@@ -100,7 +100,7 @@ def parse_exif_datetime(value: str):
 
 def get_image_datetime(path: Path):
     """
-    Try to get photo datetime from EXIF. Fallback to file's mtime if EXIF missing.
+    Try to get photo datetime from EXIF. Fallback to file's mtime if is EXIF missing.
     Returns (dt, source) where source is 'exif' or 'mtime' or None.
     """
     try:
@@ -122,8 +122,8 @@ def get_image_datetime(path: Path):
 
 def build_target_dirname(dt: datetime):
     mm = f"{dt.month:02d}"
-    yy = f"{dt.year % 100:02d}"
-    return f"{mm}-{yy}"
+    yyyy = f"{dt.year:02d}"
+    return f"{yyyy}-{mm}"
 
 def ensure_unique_path(target: Path) -> Path:
     """
